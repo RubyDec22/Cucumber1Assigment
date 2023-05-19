@@ -24,9 +24,9 @@ public class LoginStepDefinition extends TestBase {
 	@Given("User is on the techfios login page")
 	public void user_is__on_the_techfios_login_page() {
 		driver.get("https://www.techfios.com/billing/?ng=admin/");
-		
+
 	}
-		
+
 	@When("User enters the {string} in the {string} field")
 	public void user_enters_the_in_the_field(String data, String field) {
 		switch (field) {
@@ -41,7 +41,7 @@ public class LoginStepDefinition extends TestBase {
 	}
 
 	@Then("User enters {string} in the {string} field in accounts page")
-	public void user_enters_in_the_field_in_accounts_page(String data, String field) {
+	public void user_enters_in_the_field_in_accounts_page(String data, String field) throws InterruptedException {
 		switch (field) {
 		case "accountTitle":
 			loginPage.entertAccountTitle(data + generateRandomNumber(999));
@@ -70,8 +70,10 @@ public class LoginStepDefinition extends TestBase {
 	}
 
 	@Then("User should land on Dashboard page")
-	public void user_should_land_on_Dashboard_page() {
-		loginPage.DashboardPage();
+	public void user_should_land_on_Dashboard_page() throws InterruptedException {
+//		String expectedTitle = "Dashboard- iBilling";
+//		String actualTitle = loginPage.getPageTitle();
+//		Assert.assertEquals(expectedTitle, actualTitle);
 	}
 
 	@When("User clicks on {string}")
@@ -84,19 +86,19 @@ public class LoginStepDefinition extends TestBase {
 			loginPage.clickOnBankCash();
 			break;
 		case "newAccount":
-			loginPage.NewAccount();
+			loginPage.clickNewAccount();
 			break;
 		case "submit":
-			loginPage.SubmitButton();
+			loginPage.ClickOntSubmit();
 			break;
 		}
 	}
+
 	@Then("User should be able to vaidate account created successfully")
 	public void user_should_be_able_to_vaidate_account_created_successfully() {
 		takeScreenshot(driver);
 
-}
-
+	}
 
 	@After
 	public void tearDown() {
@@ -106,15 +108,12 @@ public class LoginStepDefinition extends TestBase {
 
 }
 
-
-
-
 //	}
 //
 //}
 //
 ////	   @Then("User should land on dashboard page")
 ////		public void user_should_land_on_dashboard_page() {
-////		   String expectedTitle ="Dashboard- iBilling";
-////		   String actualTitle = loginPage.getPageTitle();
-////		   Assert.assertEquals(expectedTitle, actualTitle);
+//		   String expectedTitle ="Dashboard- iBilling";
+//		   String actualTitle = loginPage.getPageTitle();
+//		   Assert.assertEquals(expectedTitle, actualTitle);

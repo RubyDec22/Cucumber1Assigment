@@ -11,13 +11,11 @@ import junit.framework.Assert;
 
 public class LoginPage {
 
-	
 	WebDriver driver;
+
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
 	}
-	
-	
 
 	// Web Elements
 	@FindBy(how = How.XPATH, using = "//*[@id=\"username\"]")
@@ -26,8 +24,7 @@ public class LoginPage {
 	WebElement Password;
 	@FindBy(how = How.XPATH, using = "//button[@name = 'login']")
 	WebElement SignInButton;
-	@FindBy(how = How.XPATH, using = "//*[@id=\"page-wrapper\"]/div[2]/div/h2")
-	WebElement DASHBOARD_HEADER_ELEMENT;
+	@FindBy(how = How.XPATH, using = "//span[contains(text(), 'Dashboard')]") WebElement DASHBOARD_HEADER_ELEMENT;
 	@FindBy(how = How.XPATH, using = "//*[@id=\"side-menu\"]/li[10]/a/span[1]")
 	WebElement BankCash_ELEMENT;
 	@FindBy(how = How.XPATH, using = "//*[@id=\"side-menu\"]/li[10]/ul/li[1]/a")
@@ -76,10 +73,10 @@ public class LoginPage {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-	
 	}
 
-	public void DashboardPage() {
+	public void DashboardPage() throws InterruptedException{
+		Thread.sleep(2000);
 		String expectedHeader = DASHBOARD_HEADER_ELEMENT.getText();
 		String actualHeader = " Dashboard ";
 	}
@@ -88,12 +85,12 @@ public class LoginPage {
 		BankCash_ELEMENT.click();
 	}
 
-
-	public void NewAccount() {
+	public void clickNewAccount() {
 		New_Account_ELEMENT.click();
 	}
 
-	public void entertAccountTitle(String accountTitle) {
+	public void entertAccountTitle(String accountTitle) throws InterruptedException {
+		Thread.sleep(2000);
 		Account_Title_ELEMENT.sendKeys(accountTitle);
 	}
 
@@ -123,12 +120,12 @@ public class LoginPage {
 		BankingURL_ELEMENT.sendKeys(internetBankingURL);
 	}
 
-	public void SubmitButton() {
+	public void ClickOntSubmit() {
 		Submit_Button_ELEMENT.click();
 
 	}
-}
 
-//public String getPageTitle() {
-//return driver.getTitle();
-//}
+	public String getPageTitle() {
+		return driver.getTitle();
+	}
+}
