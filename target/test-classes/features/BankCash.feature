@@ -10,8 +10,8 @@ When User enters the "<username>" in the "username" field
 When User enters the "<password>" in the "password" field
 And User clicks on "login"
  Then User should land on Dashboard page 
- And User clicks on "<bankCash>"
- And User clicks on "<newAccount>"
+ And User clicks on "bankCash"
+ And User clicks on "newAccount"
  And User enters "<accountTitle>" in the "accountTitle" field in accounts page 
  And User enters "<description>" in the "description" field in accounts page 
  And User enters "<initialBalance>" in the "initialBalance" field in accounts page 
@@ -24,7 +24,7 @@ Then User should be able to vaidate account created successfully
 
 
 Examples: 
-|username             | password   |accountTitle |description |nitialBalance |accountNumber |contactPerson | Phone |internetBankingURL |
- |demo@techfios.com    | abc123     | Kwatra Ruby | saving |2000 | 00099934 |Ruby |201-481-2100 |https://techfios.com/billing/?ng=accounts/add/ | 
+|username             | password   |accountTitle |description |initialBalance |accountNumber |contactPerson | Phone |internetBankingURL |
+ |demo@techfios.com    | 558566     | Kwatra Ruby | saving |2000 | 00099934 |Ruby |201-481-2100 |https://techfios.com/billing/?ng=accounts/add/ | 
 
 

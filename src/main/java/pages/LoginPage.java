@@ -1,15 +1,11 @@
 package pages;
 
-import java.util.Random;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-import junit.framework.Assert;
-
-public class LoginPage {
+public class LoginPage extends TestBase {
 
 	WebDriver driver;
 
@@ -18,18 +14,18 @@ public class LoginPage {
 	}
 
 	// Web Elements
-	@FindBy(how = How.XPATH, using = "//*[@id=\"username\"]")
+	@FindBy(how = How.XPATH, using = "//input[@id='username']")
 	WebElement UserName;
-	@FindBy(how = How.XPATH, using = "//*[@id=\"password\"]")
+	@FindBy(how = How.XPATH, using = "//input[@id='password']")
 	WebElement Password;
-	@FindBy(how = How.XPATH, using = "//button[@name = 'login']")
-	WebElement SignInButton;
+	@FindBy(how = How.XPATH, using = "//button[@name='login']")
+	WebElement SignInButton;           
 	@FindBy(how = How.XPATH, using = "//span[contains(text(), 'Dashboard')]") WebElement DASHBOARD_HEADER_ELEMENT;
-	@FindBy(how = How.XPATH, using = "//*[@id=\"side-menu\"]/li[10]/a/span[1]")
+	@FindBy(how = How.XPATH, using = "//span[contains(text(), 'Bank & Cash')]")
 	WebElement BankCash_ELEMENT;
-	@FindBy(how = How.XPATH, using = "//*[@id=\"side-menu\"]/li[10]/ul/li[1]/a")
+	@FindBy(how = How.XPATH, using = "//a[contains(text(), 'New Account')]")
 	WebElement New_Account_ELEMENT;
-	@FindBy(how = How.XPATH, using = "//*[@id=\"account\"]")
+	@FindBy(how = How.XPATH, using = "//input[@id = 'account']")
 	WebElement Account_Title_ELEMENT;
 	@FindBy(how = How.XPATH, using = "//input[@id= 'description']")
 	WebElement Description_ELEMENT;
@@ -43,43 +39,42 @@ public class LoginPage {
 	WebElement PHONE_ELEMENT;
 	@FindBy(how = How.XPATH, using = "//input[@id= 'ib_url']")
 	WebElement BankingURL_ELEMENT;
-	@FindBy(how = How.XPATH, using = "//*[@id=\"page-wrapper\"]/div[3]/div[1]/div/div/div[2]/form/button")
+	@FindBy(how = How.XPATH, using = "//button[contains(text(), 'Submit')]")
 	WebElement Submit_Button_ELEMENT;
 
+	
 	// Methods to interact with the elements
 	public void enterUserName(String userName) {
 		UserName.sendKeys(userName);
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+	
 	}
-
 	public void enterPassword(String password) {
 		Password.sendKeys(password);
 		try {
 			Thread.sleep(3000);
-
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void clickOnSigninButton() {
+	public void clickSignInButton() {
 		SignInButton.click();
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
-
-	public void DashboardPage() throws InterruptedException{
-		Thread.sleep(2000);
-		String expectedHeader = DASHBOARD_HEADER_ELEMENT.getText();
-		String actualHeader = " Dashboard ";
+	
+	public String getPageTitle() {
+		return driver.getTitle();
 	}
+
 
 	public void clickOnBankCash() {
 		BankCash_ELEMENT.click();
@@ -123,9 +118,9 @@ public class LoginPage {
 	public void ClickOntSubmit() {
 		Submit_Button_ELEMENT.click();
 
-	}
-
-	public String getPageTitle() {
-		return driver.getTitle();
+//	}
+//
+//	public String getPageTitle() {
+//		return driver.getTitle();
 	}
 }
